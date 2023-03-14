@@ -6,3 +6,5 @@ This is a basic react-native task project
 - react-navigation
 - react-native-dotenv
 - native-wind
+- axios
+- react-native-vector-icons
