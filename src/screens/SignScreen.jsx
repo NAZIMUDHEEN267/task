@@ -27,7 +27,8 @@ const SignScreen = () => {
                 <Text className="font-semibold text-4xl text-black">Sign In</Text>
                 <Text className="mt-3 text-gray-400 mb-3">Enter Your Details</Text>
                 <TextInput className={inputStyle} onChangeText={setUsername} value={username} />
-                <TextInput className={inputStyle}
+                <TextInput
+                    className={inputStyle}
                     onChangeText={setPasswd}
                     value={passwd}
                     secureTextEntry={true}
