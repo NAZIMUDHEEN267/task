@@ -3,15 +3,40 @@ import {
     Text,
     TouchableOpacity,
     TextInput,
-    KeyboardAvoidingView
-} from 'react-native'
-import React, { useState } from 'react'
+    KeyboardAvoidingView,
+    Alert
+} from 'react-native';
+import React, { useState } from 'react';
+import axios from 'axios';
+import { POST_URL } from "@env";
 
 const SignScreen = () => {
     const [username, setUsername] = useState("");
     const [passwd, setPasswd] = useState("");
 
     const inputStyle = "w-full rounded-full h-16 bg-gray-200 mb-3 px-5";
+
+    function handleRequest() {
+        axios.post(POST_URL,
+            {
+                // shak@gmail.com
+                // 123456
+                "email": JSON.stringify(username),
+                "password": Number(passwd)
+            },
+            {
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": "Bearer sss"
+                }
+            }
+        ).then(access => {
+            console.log(access.data);
+        }).catch(err => {
+            console.error(err);
+            Alert.alert("Error", err.message)
+        })
+    }
 
     return (
         <KeyboardAvoidingView behavior='height' className="mt-5 p-3 flex-1">
@@ -33,7 +58,10 @@ const SignScreen = () => {
                     value={passwd}
                     secureTextEntry={true}
                 />
-                <TouchableOpacity className={`${inputStyle} bg-blue-400 items-center justify-center`}>
+                <TouchableOpacity
+                    onPress={handleRequest}
+                    className={`${inputStyle} bg-blue-400 items-center justify-center`}
+                >
                     <Text className="font-semibold tracking-wide text-l text-gray-200">Sign in</Text>
                 </TouchableOpacity>
 

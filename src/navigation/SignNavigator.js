@@ -8,7 +8,9 @@ export default function SignNavigator() {
     return (
         <Stack.Navigator screenOptions={{
             headerShown: false
-        }} initialRouteName={"HomeTab"}>
+        }}
+            // initialRouteName={"HomeTab"}
+        >
             <Stack.Screen name="Sign" component={SignScreen} />
             <Stack.Screen name="HomeTab" component={HomeNavigator} />
         </Stack.Navigator>

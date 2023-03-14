@@ -3,18 +3,22 @@ import React, { useState, useEffect } from 'react';
 import MainNavigator from './src/navigation';
 
 function SplashCard() {
-  return <View />;
+  // useEffect(() => () => console.log("Splash removed"))
+
+  return (
+    <View style={{alignItems: "center", justifyContent: "center", flex: 1}}>
+      <Text style={{fontWeight: "600", fontSize: 30}}>Splash screen</Text>
+    </View>
+  )
 }
 
 const App = () => {
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(true);
 
-  // useEffect(() => {
-  //   setTimeout(() => setShow(!show), 3000)
-    
-  //   return () => {}
-  // }
-  //   , []);
+  useEffect(() => {
+    setTimeout(() => setShow(false), 3000)
+  }
+    , []);
 
   return show ? <SplashCard /> : <MainNavigator />;
 };

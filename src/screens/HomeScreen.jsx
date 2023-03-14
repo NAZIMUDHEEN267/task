@@ -5,7 +5,6 @@ import {
   Dimensions,
   TouchableOpacity,
   FlatList,
-  ImageBackground,
   Image
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
@@ -19,19 +18,23 @@ const HomeScreen = () => {
   const [data, setData] = useState({});
 
   useEffect(() => {
-    void async function () {
-      const getData = await axios.get(API_URL);
-      const { data: { data } } = getData;
+    try {
+      void async function () {
+        const getData = await axios.get(API_URL);
+        const { data: { data } } = getData;
 
-      setData(data);
-      setShowDetails(() => {
-       return data
-          .meal_categories
-          .map((_, i) => {
-            return showDetails[`${i}`] = false
-          })
-      })
-    }();
+        setData(data);
+        setShowDetails(() => {
+          return data
+            .meal_categories
+            .map((_, i) => {
+              return showDetails[`${i}`] = false
+            })
+        })
+      }();
+    } catch (error) {
+      console.log(error);
+    }
   }, []);
 
   const { width } = Dimensions.get("screen");
