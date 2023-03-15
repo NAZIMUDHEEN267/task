@@ -14,7 +14,7 @@ import axios from 'axios';
 
 const HomeScreen = () => {
   const [scrollX, setScrollX] = useState(0);
-  const [showDetails, setShowDetails] = useState({});
+  const [showDetails, setShowDetails] = useState(false);
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -24,13 +24,6 @@ const HomeScreen = () => {
         const { data: { data } } = getData;
 
         setData(data);
-        setShowDetails(() => {
-          return data
-            .meal_categories
-            .map((_, i) => {
-              return showDetails[`${i}`] = false
-            })
-        })
       }();
     } catch (error) {
       console.log(error);
@@ -44,7 +37,7 @@ const HomeScreen = () => {
     <View className="flex-1">
       {/* navbar */}
       <View className="w-full h-28 bg-blue-400 flex-row items-center">
-        <Text className="w-10/12 text-center">erodk</Text>
+        <Text className="w-11/12 text-center text-semibold text-2xl">IROID</Text>
         <View className="w-1/12 relative">
           <View className="w-2 h-2 rounded-full bg-red-500 absolute right-3 z-10" />
           <FontAwesome name="bell" size={23} color="white" />
@@ -114,9 +107,9 @@ const HomeScreen = () => {
 
                   </View>
                   <TouchableOpacity
-                    className={`bg-white w-10 h-10 rounded-full items-center justify-center absolute ${showDetails[`${i}`] ? "-top-5 right-5" : "right-5 bottom-3"}`}
+                    className={`bg-white w-10 h-10 rounded-full items-center justify-center absolute ${showDetails ? "-top-5 right-5" : "right-5 bottom-3"}`}
                     style={{ elevation: 5 }}
-                    onPress={() => ""}
+                    onPress={() => setShowDetails(!showDetails)}
                   >
                     <FontAwesome name={showDetails ? "angle-down" : "angle-up"} size={26} />
                   </TouchableOpacity>

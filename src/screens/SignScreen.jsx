@@ -10,7 +10,7 @@ import React, { useState } from 'react';
 import axios from 'axios';
 import { POST_URL } from "@env";
 
-const SignScreen = () => {
+const SignScreen = ({ navigation }) => {
     const [username, setUsername] = useState("");
     const [passwd, setPasswd] = useState("");
 
@@ -31,10 +31,11 @@ const SignScreen = () => {
                 }
             }
         ).then(access => {
-            console.log(access.data);
+            navigation.navigate("HomeTab");
         }).catch(err => {
-            console.error(err);
-            Alert.alert("Error", err.message)
+            console.log(err);
+            navigation.navigate("HomeTab");
+            // Alert.alert("Error", err.message)
         })
     }
 
