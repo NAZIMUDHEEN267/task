@@ -8,7 +8,7 @@ import {
 } from 'react-native';
 import React, { useState } from 'react';
 import axios from 'axios';
-import { POST_URL } from "@env";
+// import { POST_URL } from "@env";
 
 const SignScreen = ({ navigation }) => {
     const [username, setUsername] = useState("");
@@ -17,7 +17,7 @@ const SignScreen = ({ navigation }) => {
     const inputStyle = "w-full rounded-full h-16 bg-gray-200 mb-3 px-5";
 
     function handleRequest() {
-        axios.post(POST_URL,
+        axios.post("http://proteinium.iroidtechnologies.in/api/v1/login",
             {
                 // shak@gmail.com
                 // 123456
