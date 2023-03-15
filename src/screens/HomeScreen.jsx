@@ -9,7 +9,7 @@ import {
 } from 'react-native'
 import React, { useEffect, useState } from 'react'
 import FontAwesome from "react-native-vector-icons/FontAwesome";
-import { API_URL } from "@env";
+// import { API_URL } from "@env";
 import axios from 'axios';
 
 const HomeScreen = () => {
@@ -20,7 +20,7 @@ const HomeScreen = () => {
   useEffect(() => {
     try {
       void async function () {
-        const getData = await axios.get(API_URL);
+        const getData = await axios.get("http://proteinium.iroidtechnologies.in/api/v1/get-mealcategories");
         const { data: { data } } = getData;
 
         setData(data);
